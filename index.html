@@ -1,23 +1,63 @@
-<div id="loading-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a1a] transition-opacity duration-1000">
-    <div class="relative flex items-center justify-center mb-8">
-        <div class="absolute w-24 h-24 bg-purple-600/20 rounded-full blur-2xl animate-pulse"></div>
-        <div class="relative p-6 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
-            <svg class="w-12 h-12 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12c0 1.5-1.5 3-3 3s-3-1.5-3-3 1.5-3 3-3 3 1.5 3 3zm8 0c0 1.5 1.5 3 3 3s3-1.5-3-3-1.5-3-3-3-3 1.5-3 3z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12c1-1 2.5-2 4-2s3 1 4 2"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12c1 1 2.5 2 4 2s3-1 4-2"></path>
-            </svg>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Universe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #050505; margin: 0; overflow: hidden; }
+        .letter-spacing-custom { letter-spacing: 0.3em; }
+    </style>
+</head>
+<body>
+
+    <div id="loading-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a1a] transition-opacity duration-1000">
+        <div class="relative flex items-center justify-center mb-8">
+            <div class="absolute w-24 h-24 bg-purple-600/20 rounded-full blur-2xl animate-pulse"></div>
+            <div class="relative p-6 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
+                <svg class="w-12 h-12 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12c0 1.5-1.5 3-3 3s-3-1.5-3-3 1.5-3 3-3 3 1.5 3 3zm8 0c0 1.5 1.5 3 3 3s3-1.5-3-3-1.5-3-3-3-3 1.5-3 3z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12c1-1 2.5-2 4-2s3 1 4 2"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12c1 1 2.5 2 4 2s3-1 4-2"></path>
+                </svg>
+            </div>
         </div>
+
+        <div class="text-center letter-spacing-custom">
+            <h2 class="text-white text-2xl font-bold mb-1">STELLAR</h2>
+            <h2 class="text-white text-2xl font-bold mb-4">UNIVERSE</h2>
+            <p class="text-purple-400 text-[10px] uppercase font-medium opacity-60">Creative Direction</p>
+        </div>
+
+        <div class="absolute bottom-20 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+            <div id="progress-bar" class="h-full bg-purple-500 w-0 transition-all duration-[3000ms] ease-out"></div>
+        </div>
+        <p class="absolute bottom-10 text-[10px] text-gray-500 tracking-widest uppercase">Est. 2024</p>
     </div>
 
-    <div class="text-center tracking-[0.3em]">
-        <h2 class="text-white text-2xl font-bold mb-1">STELLAR</h2>
-        <h2 class="text-white text-2xl font-bold mb-4">UNIVERSE</h2>
-        <p class="text-purple-400 text-[10px] uppercase font-medium opacity-60">Creative Direction</p>
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 min-h-screen flex items-center justify-center">
+        <h1 class="text-white text-xl">Selamat Datang di Stellar Universe</h1>
     </div>
 
-    <div class="absolute bottom-12 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
-        <div id="progress-bar" class="h-full bg-purple-500 w-0 transition-all duration-[3000ms] ease-out"></div>
-    </div>
-    <p class="absolute bottom-6 text-[10px] text-gray-500 tracking-widest uppercase">Est. 2024</p>
-</div>
+    <script>
+        window.addEventListener('load', () => {
+            const progressBar = document.getElementById('progress-bar');
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainContent = document.getElementById('main-content');
+
+            // Jalankan animasi progress bar
+            setTimeout(() => { progressBar.style.width = '100%'; }, 100);
+
+            // Transisi ke konten utama
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                mainContent.classList.replace('opacity-0', 'opacity-100');
+                document.body.style.overflow = 'auto'; // Izinkan scroll lagi
+                setTimeout(() => { loadingScreen.style.display = 'none'; }, 1000);
+            }, 3500);
+        });
+    </script>
+</body>
+</html>
