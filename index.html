@@ -3,110 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Universe | Cosmic OS</title>
+    <title>Stellar Universe | Creative Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050508; color: white; margin: 0; overflow-x: hidden; }
-        .screen { display: none; opacity: 0; transition: opacity 0.5s ease; }
+        .screen { display: none; opacity: 0; transition: opacity 0.5s ease-in-out; }
         .screen.active { display: block; opacity: 1; }
+        .screen.flex-center { display: none; }
+        .screen.flex-center.active { display: flex; align-items: center; justify-content: center; opacity: 1; }
         .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 1.5rem; }
-        .nav-blur { background: rgba(10, 10, 15, 0.8); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-blur { background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .btn-purple { background: #6366f1; box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.5); }
     </style>
 </head>
 <body>
 
-    <div id="screen-philosophy" class="screen active min-h-screen flex-col px-6 py-12">
-        <div class="text-center mb-10">
-            <h1 class="text-4xl font-black leading-tight mb-4 uppercase tracking-tighter">Born<br>From The<br><span class="text-gray-500">Stars</span></h1>
+    <div id="loading" class="screen flex-center active fixed inset-0 z-[100] bg-[#0a0a1a]">
+        <div class="text-center">
+            <div class="relative p-8 border border-white/10 rounded-full bg-white/5 backdrop-blur-md mb-8 inline-block">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M18.181 7.636C15.932 7.636 14.156 9.244 12 11.455c-2.156-2.211-3.932-3.819-6.181-3.819-2.656 0-4.819 2.163-4.819 4.819s2.163 4.819 4.819 4.819c2.249 0 4.025-1.608 6.181-3.819 2.156 2.211 3.932 3.819 6.181 3.819 2.656 0 4.819-2.163 4.819-4.819s-2.163-4.819-4.819-4.819zm-12.181 7.636c-1.554 0-2.819-1.265-2.819-2.819s1.265-2.819 2.819-2.819c1.372 0 2.641 1.164 4.181 2.819-1.54 1.655-2.809 2.819-4.181 2.819zm12.181 0c-1.372 0-2.641-1.164-4.181-2.819 1.54-1.655 2.809-2.819 4.181-2.819 1.554 0 2.819 1.265 2.819 2.819s-1.265 2.819-2.819 2.819z"/></svg>
+            </div>
+            <div class="w-48 h-1 bg-white/10 rounded-full overflow-hidden mx-auto">
+                <div id="bar" class="h-full bg-indigo-500 w-0 transition-all duration-[3000ms]"></div>
+            </div>
         </div>
-        
-        <div class="glass-card grid grid-cols-3 py-6 mb-10 text-center">
+    </div>
+
+    <div id="slide1" class="screen flex-center min-h-screen px-10 text-center bg-cover" style="background-image: linear-gradient(rgba(5,5,8,0.8), #050508), url('https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800');">
+        <div class="absolute top-12 right-8 text-[10px] font-bold opacity-50 tracking-widest uppercase">Skip</div>
+        <div class="w-44 h-44 glass-card flex items-center justify-center mb-10"><span class="text-6xl">🚀</span></div>
+        <h1 class="text-4xl font-black italic">Launch <span class="text-indigo-400">Your Vision</span></h1>
+        <p class="text-gray-400 text-sm mt-4 mb-12">Crafting visual identities that defy gravity.</p>
+        <button onclick="nav('slide1', 'slide2')" class="w-full py-4 glass-card font-bold text-[10px] uppercase tracking-widest">Next →</button>
+    </div>
+
+    <div id="philosophy" class="screen min-h-screen px-6 py-12">
+        <div class="text-center mb-12">
+            <div class="w-12 h-12 bg-indigo-500/20 border border-indigo-500/30 rounded-2xl flex items-center justify-center mx-auto mb-6">☀️</div>
+            <h1 class="text-4xl font-black uppercase tracking-tighter leading-none">Born From<br><span class="text-gray-500">The Stars</span></h1>
+        </div>
+        <div class="glass-card grid grid-cols-3 py-6 mb-8 text-center">
             <div><p class="text-[8px] uppercase text-gray-500">Projects</p><p class="text-xl font-bold">140+</p></div>
-            <div class="border-x border-white/10"><p class="text-[8px] uppercase text-gray-500">Years</p><p class="text-xl font-bold">05</p></div>
+            <div class="border-x border-white/10"><div><p class="text-[8px] uppercase text-gray-500">Years</p><p class="text-xl font-bold">05</p></div></div>
             <div><p class="text-[8px] uppercase text-gray-500">Awards</p><p class="text-xl font-bold">22</p></div>
         </div>
-
-        <div class="space-y-4 mb-10">
+        <div class="space-y-4 mb-12">
             <div class="glass-card p-5 flex items-center gap-4">
-                <div class="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center text-purple-400">👁️</div>
+                <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center">👁️</div>
                 <div><h4 class="font-bold text-sm">Vision</h4><p class="text-[10px] text-gray-500">Seeing beyond the horizon.</p></div>
             </div>
         </div>
-
-        <button onclick="changeScreen('screen-main')" class="w-full py-5 bg-purple-600 rounded-2xl font-bold tracking-widest uppercase text-xs shadow-lg shadow-purple-900/40">
-            Start Your Voyage 🚀
-        </button>
+        <button onclick="nav('philosophy', 'main')" class="w-full py-5 btn-purple rounded-2xl font-bold text-xs uppercase tracking-widest">Start Your Voyage 🚀</button>
     </div>
 
-    <div id="screen-main" class="screen min-h-screen pb-32">
+    <div id="main" class="screen min-h-screen pb-32">
         <div class="flex items-center justify-between px-6 py-6">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center font-bold text-xs italic">S</div>
-                <span class="text-[10px] font-bold tracking-widest uppercase opacity-80">Stellar</span>
+                <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center font-black italic shadow-lg shadow-indigo-900/40">S</div>
+                <span class="text-[10px] font-black tracking-widest uppercase">Stellar</span>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">🔔<div class="absolute -top-1 -right-1 w-2 h-2 bg-purple-500 rounded-full border-2 border-[#050508]"></div></div>
-                <div class="w-8 h-8 rounded-full bg-gray-700 overflow-hidden border border-white/10">
-                    <img src="https://i.pravatar.cc/100" alt="Avatar">
-                </div>
+                <div class="relative text-xl">🔔<div class="absolute top-0 right-0 w-2 h-2 bg-indigo-500 rounded-full border-2 border-[#050508]"></div></div>
+                <img src="https://i.pravatar.cc/100" class="w-9 h-9 rounded-full border border-white/10">
             </div>
         </div>
 
         <div class="px-6 mb-10">
-            <div class="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-8 border border-white/10">
+            <div class="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-8 border border-white/5">
                 <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800" class="w-full h-full object-cover">
-                <div class="absolute bottom-6 left-6 px-4 py-1.5 bg-purple-600/30 backdrop-blur-md rounded-full border border-white/20">
+                <div class="absolute bottom-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
                     <span class="text-[8px] font-bold uppercase tracking-widest flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></span> Live Universe
+                        <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse"></span> Live Universe
                     </span>
                 </div>
             </div>
             <div class="text-center px-4">
-                <h1 class="text-3xl font-black leading-tight mb-4 uppercase tracking-tighter">Welcome to<br>Stellar Universe</h1>
-                <p class="text-gray-500 text-[11px] leading-relaxed">A creative studio crafting stellar visuals and digital experiences for the next generation.</p>
-                <button class="mt-8 px-8 py-3.5 bg-purple-600 rounded-2xl font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 mx-auto shadow-lg shadow-purple-900/20">
-                    Explore Our Universe <span>→</span>
-                </button>
+                <h1 class="text-3xl font-black uppercase tracking-tighter leading-tight mb-4">Welcome To<br>Stellar Universe</h1>
+                <p class="text-gray-500 text-[11px] leading-relaxed mb-8">Crafting stellar visuals and digital experiences for the next generation.</p>
+                <button class="px-10 py-4 btn-purple rounded-2xl font-bold text-[10px] uppercase tracking-widest flex items-center gap-3 mx-auto">Explore Our Universe <span>→</span></button>
             </div>
         </div>
 
-        <div class="px-6 mb-10">
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-[10px] font-bold tracking-[0.3em] uppercase opacity-50">Main Modules</h3>
-                <span class="opacity-30">•••</span>
+        <div class="px-6 grid grid-cols-2 gap-4 mb-10">
+            <div class="glass-card p-6 aspect-square flex flex-col justify-between">
+                <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-xl">💠</div>
+                <div><h4 class="font-bold text-sm">Services</h4><p class="text-[9px] text-gray-500">Visual Identity</p></div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="glass-card p-6 aspect-square flex flex-col justify-between">
-                    <div class="flex justify-between items-start">
-                        <div class="w-10 h-10 bg-indigo-600/20 rounded-xl flex items-center justify-center">💠</div>
-                        <span class="opacity-40">↗</span>
-                    </div>
-                    <div><h4 class="font-bold text-sm mb-1">Services</h4><p class="text-[9px] text-gray-500">Visual Identity</p></div>
-                </div>
-                <div class="glass-card p-6 aspect-square flex flex-col justify-between">
-                    <div class="flex justify-between items-start">
-                        <div class="w-10 h-10 bg-orange-600/20 rounded-xl flex items-center justify-center">👁️</div>
-                        <span class="opacity-40">↗</span>
-                    </div>
-                    <div><h4 class="font-bold text-sm mb-1">Portfolio</h4><p class="text-[9px] text-gray-500">Latest works</p></div>
-                </div>
+            <div class="glass-card p-6 aspect-square flex flex-col justify-between">
+                <div class="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center text-xl">👁️</div>
+                <div><h4 class="font-bold text-sm">Portfolio</h4><p class="text-[9px] text-gray-500">Latest Works</p></div>
             </div>
         </div>
 
-        <div class="fixed bottom-8 left-6 right-6 h-20 nav-blur rounded-[2rem] flex items-center justify-around px-4 z-50">
-            <div class="text-purple-500">🏠</div>
-            <div class="opacity-30">🔍</div>
-            <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-900/40 -mt-10 border-4 border-[#050508]">💬</div>
-            <div class="opacity-30">❤️</div>
-            <div class="opacity-30">👤</div>
+        <div class="fixed bottom-8 left-6 right-6 h-20 nav-blur rounded-[2.5rem] flex items-center justify-around px-6 z-50">
+            <div class="text-indigo-400 text-xl">🏠</div>
+            <div class="opacity-30 text-xl">🔍</div>
+            <div class="w-14 h-14 btn-purple rounded-2xl flex items-center justify-center shadow-lg -mt-10 border-4 border-[#050508] text-xl">💬</div>
+            <div class="opacity-30 text-xl">❤️</div>
+            <div class="opacity-30 text-xl">👤</div>
         </div>
     </div>
 
     <script>
-        function changeScreen(id) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+        window.onload = () => {
+            setTimeout(() => document.getElementById('bar').style.width = '100%', 100);
+            setTimeout(() => nav('loading', 'slide1'), 3500);
+        };
+        function nav(oldId, newId) {
+            document.getElementById(oldId).classList.remove('active');
+            const next = document.getElementById(newId);
+            next.classList.add('active');
+            if (newId === 'main' || newId === 'philosophy') next.style.display = 'block';
+            else next.classList.add('flex-center');
             window.scrollTo(0,0);
         }
     </script>
