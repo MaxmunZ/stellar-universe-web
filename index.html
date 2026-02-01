@@ -90,53 +90,56 @@
             </div>
         </div>
 
-        <h1 class="text-2xl font-black uppercase text-center mb-8 tracking-tighter leading-tight">Welcome To<br>Stellar Universe</h1>
+        <h1 class="text-2xl font-black uppercase text-center mb-8 tracking-tighter leading-tight text-white">Welcome To<br>Stellar Universe</h1>
 
         <div class="grid grid-cols-2 gap-4 w-full mb-24">
             <div class="glass p-6 aspect-square flex flex-col justify-between relative">
                 <div class="flex justify-between">
                     <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-2xl text-indigo-400">⚝</div>
-                    <span class="opacity-40">↗</span>
+                    <span class="opacity-40 text-white">↗</span>
                 </div>
-                <div><h4 class="font-bold text-sm uppercase">Services</h4><p class="text-[9px] text-gray-500">Visual Identity</p></div>
+                <div><h4 class="font-bold text-sm uppercase text-white">Services</h4><p class="text-[9px] text-gray-500">Visual Identity</p></div>
             </div>
             <div class="glass p-6 aspect-square flex flex-col justify-between relative">
                 <div class="flex justify-between">
                     <div class="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center text-xl text-orange-400">👁️</div>
-                    <span class="opacity-40">↗</span>
+                    <span class="opacity-40 text-white">↗</span>
                 </div>
-                <div><h4 class="font-bold text-sm uppercase">Portfolio</h4><p class="text-[9px] text-gray-500">Latest works</p></div>
+                <div><h4 class="font-bold text-sm uppercase text-white">Portfolio</h4><p class="text-[9px] text-gray-500">Latest works</p></div>
             </div>
         </div>
 
         <div class="fixed bottom-8 left-6 right-6 h-20 bg-[#0a0a1a]/90 backdrop-blur-xl rounded-[2.5rem] flex items-center justify-around px-6 border border-white/10 z-50 shadow-2xl">
             <div class="text-indigo-500 text-xl">🏠</div>
-            <div class="opacity-30 text-xl">🔍</div>
+            <div class="opacity-30 text-xl text-white">🔍</div>
             <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg -mt-10 border-4 border-[#050508] text-white text-xl">💬</div>
-            <div class="opacity-30 text-xl">❤️</div>
-            <div class="opacity-30 text-xl">👤</div>
+            <div class="opacity-30 text-xl text-white">❤️</div>
+            <div class="opacity-30 text-xl text-white">👤</div>
         </div>
     </div>
 
     <script>
-        // Memastikan bar loading berjalan
         window.addEventListener('load', () => {
-            document.getElementById('bar').style.width = '100%';
-            // Pindah ke Slide 1 setelah 3.5 detik
-            setTimeout(() => { go('scr-load', 'scr-1'); }, 3500);
+            // Bar loading mulai
+            setTimeout(() => { document.getElementById('bar').style.width = '100%'; }, 100);
+            
+            // Pindah dari loading ke scr-1 setelah 3.5 detik
+            setTimeout(() => {
+                go('scr-load', 'scr-1');
+            }, 3500);
         });
 
-        // Fungsi navigasi yang wajib ada
         function go(oldId, newId) {
             const oldScr = document.getElementById(oldId);
             const newScr = document.getElementById(newId);
             
             if(oldScr && newScr) {
                 oldScr.classList.remove('active');
+                // Sembunyikan total setelah transisi fade out
                 setTimeout(() => {
                     oldScr.style.display = 'none';
                     newScr.classList.add('active');
-                }, 100);
+                }, 600);
             }
         }
     </script>
