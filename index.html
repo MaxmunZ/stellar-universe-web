@@ -60,71 +60,66 @@
         </button>
     </div>
 
-    <div id="scr-born" class="screen px-6 py-12 justify-start overflow-y-auto">
-        <div class="flex items-center justify-between w-full mb-8">
-            <button onclick="go('scr-born', 'scr-1')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
-            <span class="text-[10px] font-bold tracking-[0.3em] uppercase opacity-60">Stellar Universe</span>
-            <div class="w-5"></div>
-        </div>
-
-<div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-2xl">
-    ⚝
+<div id="scr-born" class="screen active px-6 py-12 justify-start overflow-y-auto">
+    <h1 class="text-center text-[38px] font-black uppercase leading-[0.9] mb-10">Born From<br>The <span class="text-gray-500">Stars</span></h1>
+    
+    <button onclick="go('scr-born', 'scr-main-dash')" class="w-full py-5 bg-indigo-600 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-2xl shadow-indigo-900/40">
+        Start Your Voyage 🚀
+    </button>
 </div>
 
-        <h1 class="text-center text-[38px] font-black uppercase leading-[0.9] tracking-tighter mb-6">Born From<br>The <span class="text-gray-500">Stars</span></h1>
-        <p class="text-center text-gray-400 text-[11px] leading-relaxed mb-10 px-4">We are not just designers. We are cosmic architects shaping the digital void.</p>
-
-        <div class="glass grid grid-cols-3 py-6 mb-10 text-center w-full">
-            <div><p class="text-[8px] uppercase text-gray-500 mb-1 tracking-widest">Projects</p><p class="text-xl font-bold">140+</p></div>
-            <div class="border-x border-white/10"><p class="text-[8px] uppercase text-gray-500 mb-1 tracking-widest">Years</p><p class="text-xl font-bold">05</p></div>
-            <div><p class="text-[8px] uppercase text-gray-500 mb-1 tracking-widest">Awards</p><p class="text-xl font-bold">22</p></div>
+<div id="scr-main-dash" class="screen px-6 py-6 justify-start overflow-y-auto bg-[#050508]">
+    <div class="flex items-center justify-between w-full mb-8">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">⚝</div>
+            <span class="text-xs font-black tracking-widest uppercase">Stellar</span>
         </div>
-
-        <div class="w-full space-y-4 mb-8">
-            <p class="text-center text-[9px] font-bold tracking-[0.4em] uppercase text-indigo-500 mb-6 italic">Our Philosophy</p>
-            
-            <div class="glass p-5 flex items-center gap-4">
-                <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400">👁️</div>
-                <div><h4 class="font-bold text-sm">Vision</h4><p class="text-[10px] text-gray-500">Seeing beyond the horizon. We predict trends.</p></div>
-            </div>
-
-            <div class="glass p-5 flex items-center gap-4 opacity-50">
-                <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center">🌐</div>
-                <div><h4 class="font-bold text-sm">Motion</h4><p class="text-[10px] text-gray-500">Static is dead. We breathe life into pixels.</p></div>
-            </div>
-
-            <div class="glass p-5 flex items-center gap-4 opacity-50">
-                <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center">♾</div>
-                <div><h4 class="font-bold text-sm">Infinite</h4><p class="text-[10px] text-gray-500">Creativity without boundaries.</p></div>
-            </div>
+        <div class="flex items-center gap-4">
+            <div class="relative text-xl">🔔<div class="absolute top-0 right-0 w-2 h-2 bg-indigo-500 rounded-full"></div></div>
+            <img src="https://i.pravatar.cc/100" class="w-10 h-10 rounded-full border border-white/10">
         </div>
-
-        <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-12 glass">
-            <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800" class="w-full h-full object-cover opacity-60">
-            <div class="absolute bottom-4 left-6">
-                <p class="text-[8px] font-bold tracking-widest text-indigo-400 uppercase">Location</p>
-                <h4 class="font-bold text-sm uppercase">Deep Space Base</h4>
-            </div>
-        </div>
-
-        <button onclick="go('scr-born', 'scr-dashboard')" class="w-full py-5 bg-indigo-600 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-2xl shadow-indigo-900/40 mt-auto">
-            Start Your Voyage 🚀
-        </button>
     </div>
 
-    <script>
-        window.addEventListener('load', () => {
-            document.getElementById('bar').style.width = '100%';
-            setTimeout(() => { go('scr-load', 'scr-1'); }, 3500);
-        });
+    <div class="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-8 border border-white/5">
+        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800" class="w-full h-full object-cover">
+        <div class="absolute bottom-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+            <span class="text-[8px] font-bold uppercase tracking-widest flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse"></span> Live Universe
+            </span>
+        </div>
+    </div>
 
-        function go(oldId, newId) {
-            document.getElementById(oldId).classList.remove('active');
-            setTimeout(() => {
-                document.getElementById(oldId).style.display = 'none';
-                document.getElementById(newId).classList.add('active');
-            }, 400);
-        }
-    </script>
-</body>
-</html>
+    <h1 class="text-2xl font-black uppercase text-center mb-2 tracking-tighter">Welcome To<br>Stellar Universe</h1>
+    <p class="text-center text-gray-500 text-[11px] mb-8 px-8">A creative studio crafting stellar visuals and digital experiences.</p>
+
+    <div class="grid grid-cols-2 gap-4 w-full mb-10">
+        <div class="glass p-6 aspect-square flex flex-col justify-between relative">
+            <div class="flex justify-between">
+                <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-2xl text-indigo-400">⚝</div>
+                <span class="opacity-40">↗</span>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm">Services</h4>
+                <p class="text-[9px] text-gray-500">Visual Identity</p>
+            </div>
+        </div>
+        <div class="glass p-6 aspect-square flex flex-col justify-between relative">
+            <div class="flex justify-between">
+                <div class="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center text-xl text-orange-400">👁️</div>
+                <span class="opacity-40">↗</span>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm">Portfolio</h4>
+                <p class="text-[9px] text-gray-500">Latest works</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-8 left-6 right-6 h-20 bg-[#0a0a1a]/80 backdrop-blur-xl rounded-[2.5rem] flex items-center justify-around px-6 border-t border-white/5 z-50">
+        <div class="text-indigo-500 text-xl">🏠</div>
+        <div class="opacity-30 text-xl">🔍</div>
+        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg -mt-10 border-4 border-[#050508] text-xl text-white">💬</div>
+        <div class="opacity-30 text-xl">❤️</div>
+        <div class="opacity-30 text-xl">👤</div>
+    </div>
+</div>
