@@ -10,40 +10,42 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050508; color: white; margin: 0; overflow: hidden; }
         .screen { display: none; min-height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.6s ease; }
         .active { display: flex !important; opacity: 1 !important; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1.5rem; }
-        .letter-spacing-custom { letter-spacing: 0.3em; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2.5rem; }
+        .letter-spacing-huge { letter-spacing: 0.35em; }
     </style>
 </head>
 <body>
 
     <div id="scr-load" class="screen active bg-[#0a0a1a] fixed inset-0 z-[100]">
-        <div class="relative p-8 border border-white/10 rounded-full bg-white/5 mb-10">
+        <div class="relative p-8 border border-white/10 rounded-full bg-white/5 mb-10 shadow-[0_0_40px_rgba(124,58,237,0.2)]">
             <svg class="w-14 h-14 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.181 7.636C15.932 7.636 14.156 9.244 12 11.455c-2.156-2.211-3.932-3.819-6.181-3.819-2.656 0-4.819 2.163-4.819 4.819s2.163 4.819 4.819 4.819c2.249 0 4.025-1.608 6.181-3.819 2.156 2.211 3.932 3.819 6.181 3.819 2.656 0 4.819-2.163 4.819-4.819s-2.163-4.819-4.819-4.819zm-12.181 7.636c-1.554 0-2.819-1.265-2.819-2.819s1.265-2.819 2.819-2.819c1.372 0 2.641 1.164 4.181 2.819-1.54 1.655-2.809 2.819-4.181 2.819zm12.181 0c-1.372 0-2.641-1.164-4.181-2.819 1.54-1.655 2.809-2.819 4.181-2.819 1.554 0 2.819 1.265 2.819 2.819s-1.265 2.819-2.819 2.819z"/>
             </svg>
         </div>
-
-        <div class="text-center letter-spacing-custom mb-20">
-            <h2 class="text-white text-2xl font-extrabold tracking-[0.2em]">STELLAR</h2>
-            <h2 class="text-white text-2xl font-extrabold tracking-[0.2em] mb-3">UNIVERSE</h2>
+        <div class="text-center letter-spacing-huge mb-20">
+            <h2 class="text-white text-2xl font-extrabold">STELLAR</h2>
+            <h2 class="text-white text-2xl font-extrabold mb-3">UNIVERSE</h2>
             <p class="text-purple-400 text-[10px] uppercase font-bold opacity-60">Creative Direction</p>
         </div>
-
-        <div class="absolute bottom-24 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
-            <div id="bar" class="h-full bg-purple-500 w-0 transition-all duration-[3500ms] ease-out"></div>
+        <div class="absolute bottom-24 w-48 h-[1.5px] bg-white/10 rounded-full overflow-hidden">
+            <div id="bar" class="h-full bg-purple-500 w-0 transition-all duration-[3000ms] ease-out"></div>
         </div>
-
         <p class="absolute bottom-12 text-[10px] text-gray-500 tracking-[0.4em] uppercase font-bold">Est. 2024</p>
     </div>
 
-    <div id="scr-1" class="screen px-10 text-center bg-cover" style="background-image: linear-gradient(rgba(5,5,8,0.8), #050508), url('https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800');">
+    <div id="scr-1" class="screen px-10 text-center bg-cover" style="background-image: linear-gradient(rgba(5,5,8,0.85), #050508), url('https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800');">
         <div class="absolute top-12 right-8 text-[10px] font-bold opacity-50 tracking-widest uppercase">Skip</div>
-        <div class="w-40 h-40 glass flex items-center justify-center mb-10 shadow-2xl">
-            <img src="https://cdn-icons-png.flaticon.com/512/1042/1042308.png" class="w-20 h-20 invert opacity-90" alt="Rocket">
+        
+        <div class="w-44 h-44 glass flex items-center justify-center mb-10 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-purple-500/10 blur-2xl"></div>
+            <svg class="w-20 h-20 text-white relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.5 8.5L19 5m0 0l-3.5 3.5M19 5l-10 10m0 0l-3.5 3.5m3.5-3.5H5m0 0V11m14-6L5 19"></path>
+            </svg>
         </div>
-        <h1 class="text-4xl font-black italic">Launch</h1>
-        <h1 class="text-4xl font-black italic text-indigo-400 mb-6">Your Vision</h1>
-        <p class="text-gray-400 text-sm mb-12 opacity-80">Crafting visual identities that defy gravity. Welcome to the future of design.</p>
+
+        <h1 class="text-4xl font-black italic tracking-tighter">Launch</h1>
+        <h1 class="text-4xl font-black italic text-indigo-400 mb-6 tracking-tighter">Your Vision</h1>
+        <p class="text-gray-400 text-sm mb-12 opacity-80 leading-relaxed">Crafting visual identities that defy gravity. Welcome to the future of design.</p>
         
         <div class="flex gap-2 mb-10">
             <div class="w-8 h-1.5 bg-indigo-500 rounded-full"></div>
@@ -51,22 +53,31 @@
             <div class="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
         </div>
 
-        <button onclick="go('scr-1', 'scr-main')" class="w-full py-4 glass font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-3">
-            NEXT <span class="text-lg">→</span>
+        <button onclick="go('scr-1', 'scr-dashboard')" class="w-full py-5 bg-[#0d0d1a] border border-white/10 rounded-2xl font-bold text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-xl">
+            NEXT <span>→</span>
         </button>
     </div>
 
-    <div id="scr-main" class="screen px-6 py-6 justify-start overflow-y-auto bg-[#050508]">
-        <h2 class="mt-10 font-bold uppercase tracking-widest">Main Dashboard Loading...</h2>
+    <div id="scr-dashboard" class="screen px-6 py-12 justify-start overflow-y-auto">
+        <h1 class="text-4xl font-black uppercase tracking-tighter text-center mb-10 leading-none">Born From<br><span class="text-gray-500">The Stars</span></h1>
+        <div class="glass grid grid-cols-3 py-7 mb-8 text-center w-full">
+            <div><p class="text-[8px] uppercase text-gray-500 mb-1">Projects</p><p class="text-xl font-bold">140+</p></div>
+            <div class="border-x border-white/10"><p class="text-[8px] uppercase text-gray-500 mb-1">Years</p><p class="text-xl font-bold">05</p></div>
+            <div><p class="text-[8px] uppercase text-gray-500 mb-1">Awards</p><p class="text-xl font-bold">22</p></div>
+        </div>
+        <div class="w-full space-y-4 mb-10">
+            <div class="glass p-5 flex items-center gap-5">
+                <div class="w-12 h-12 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400">👁️</div>
+                <div><h4 class="font-bold text-sm">Vision</h4><p class="text-[10px] text-gray-500">Seeing beyond the horizon.</p></div>
+            </div>
+        </div>
+        <button onclick="go('scr-dashboard', 'scr-main')" class="w-full py-5 bg-indigo-600 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-2xl shadow-indigo-900/40">Start Your Voyage 🚀</button>
     </div>
 
     <script>
         window.addEventListener('load', () => {
-            // Jalankan bar progress
-            setTimeout(() => { document.getElementById('bar').style.width = '100%'; }, 100);
-            
-            // Pindah ke Slide 1 setelah bar selesai (3.8 detik)
-            setTimeout(() => { go('scr-load', 'scr-1'); }, 3800);
+            document.getElementById('bar').style.width = '100%';
+            setTimeout(() => { go('scr-load', 'scr-1'); }, 3500);
         });
 
         function go(oldId, newId) {
@@ -76,7 +87,8 @@
             setTimeout(() => {
                 oldScr.style.display = 'none';
                 newScr.classList.add('active');
-            }, 500);
+                document.body.style.overflowY = (newId === 'scr-dashboard') ? 'auto' : 'hidden';
+            }, 400);
         }
     </script>
 </body>
