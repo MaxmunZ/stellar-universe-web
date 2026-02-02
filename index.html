@@ -7,106 +7,170 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050508; color: white; margin: 0; overflow-x: hidden; }
         .screen { display: none; min-height: 100vh; width: 100%; flex-direction: column; align-items: center; opacity: 0; transition: opacity 0.6s ease; }
         .active { display: flex !important; opacity: 1 !important; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 1.5rem; }
-        .dot-grid { background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 20px 20px; }
-        #nav-bar { display: none; }
-        .nav-active { display: flex !important; }
         
+        /* Background Galaxy Global */
         .bg-galaxy {
-            background: radial-gradient(circle at center, rgba(26, 26, 58, 0.8) 0%, #050508 100%), 
+            background: radial-gradient(circle at center, rgba(26, 26, 58, 0.4) 0%, #050508 100%), 
                         url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200');
             background-size: cover;
             background-attachment: fixed;
             background-blend-mode: overlay;
         }
 
-        .stellar-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(139, 92, 246, 0.1);
-            transition: all 0.3s ease;
+        /* Teks Gradasi untuk "Stars" */
+        .text-gradient-stars {
+            background: linear-gradient(to right, #ffffff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .stellar-card:active { transform: scale(0.96); border-color: rgba(139, 92, 246, 0.6); }
+
+        /* Kartu Modul Sesuai Gambar */
+        .stellar-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .stellar-card:active { transform: scale(0.96); border-color: rgba(139, 92, 246, 0.4); }
+
+        /* Icon Container di dalam kartu */
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        #nav-bar { display: none; }
+        .nav-active { display: flex !important; }
     </style>
 </head>
-<body class="dot-grid">
+<body class="bg-black">
 
     <div id="scr-load" class="screen active bg-[#0a0a1a] fixed inset-0 z-[100] justify-center">
         <div class="relative p-8 border border-white/10 rounded-full bg-white/5 mb-10">
-            <svg class="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.181 7.636C15.932 7.636 14.156 9.244 12 11.455c-2.156-2.211-3.932-3.819-6.181-3.819-2.656 0-4.819 2.163-4.819 4.819s2.163 4.819 4.819 4.819c2.249 0 4.025-1.608 6.181-3.819 2.156 2.211 3.932 3.819 6.181 3.819 2.656 0 4.819-2.163 4.819-4.819s-2.163-4.819-4.819-4.819zm-12.181 7.636c-1.554 0-2.819-1.265-2.819-2.819s1.265-2.819 2.819-2.819c1.372 0 2.641 1.164 4.181 2.819-1.54 1.655-2.809 2.819-4.181 2.819zm12.181 0c-1.372 0-2.641-1.164-4.181-2.819 1.54-1.655 2.809-2.819 4.181-2.819 1.554 0 2.819 1.265 2.819 2.819s-1.265 2.819-2.819 2.819z"/>
-            </svg>
+            <div class="w-14 h-14 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
-        <div class="text-center tracking-[0.3em] mb-20">
-            <h2 class="text-2xl font-extrabold uppercase">STELLAR</h2>
-            <h2 class="text-2xl font-extrabold uppercase mb-2">UNIVERSE</h2>
+        <div class="text-center tracking-[0.4em]">
+            <h2 class="text-2xl font-extrabold uppercase mb-1">STELLAR</h2>
+            <p class="text-indigo-400 text-[10px] font-bold opacity-60">UNIVERSE SYSTEM</p>
         </div>
         <div class="absolute bottom-24 w-48 h-[1px] bg-white/10 rounded-full overflow-hidden">
-            <div id="bar" class="h-full bg-indigo-500 w-0 transition-all duration-[3000ms] ease-out"></div>
+            <div id="bar" class="h-full bg-indigo-500 w-0 transition-all duration-[3000ms]"></div>
         </div>
     </div>
 
-    <div id="scr-1" class="screen px-10 text-center justify-center" style="background: radial-gradient(circle at top, #1a1a3a 0%, #050508 70%);">
-        <div class="w-48 h-48 glass flex items-center justify-center mb-10">
-             <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/Rocket.png" class="w-24 h-24 object-contain">
+    <div id="scr-1" class="screen px-10 text-center justify-center bg-galaxy">
+        <div class="absolute top-12 right-8 text-[10px] font-bold opacity-40 tracking-widest uppercase">Skip</div>
+        <div class="w-56 h-56 stellar-card flex items-center justify-center mb-12 shadow-[0_0_60px_rgba(99,102,241,0.1)]">
+             <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/Rocket.png" class="w-28 h-28 object-contain">
         </div>
-        <h1 class="text-4xl font-black italic uppercase leading-none">Launch</h1>
-        <h1 class="text-4xl font-black italic uppercase text-indigo-400 mb-6">Your Vision</h1>
-        <button onclick="go('scr-1', 'scr-born')" class="w-full py-5 bg-[#0f0f1f] border border-white/10 rounded-2xl font-bold text-[10px] uppercase tracking-widest">NEXT →</button>
+        <h1 class="text-5xl font-black italic uppercase leading-tight mb-2">Launch</h1>
+        <h1 class="text-5xl font-black italic uppercase text-indigo-400 mb-6">Your Vision</h1>
+        <p class="text-gray-400 text-sm mb-12 leading-relaxed px-4">Crafting visual identities that defy gravity. Welcome to the future of design.</p>
+        <button onclick="go('scr-1', 'scr-born')" class="w-full py-5 stellar-card font-extrabold text-xs uppercase tracking-[0.3em] flex items-center justify-center gap-3">
+            NEXT <span>→</span>
+        </button>
     </div>
 
     <div id="scr-born" class="screen bg-galaxy px-6 py-12 justify-start overflow-y-auto">
-        <div class="flex justify-center mb-4"><span class="text-3xl text-indigo-500">⚝</span></div>
-        <h1 class="text-center text-[38px] font-black uppercase leading-[0.9] mb-10 tracking-tighter">Born From<br>The Stars</h1>
+        <div class="flex justify-center mb-6"><span class="text-3xl text-indigo-500">⚝</span></div>
+        <h1 class="text-center text-[42px] font-black uppercase leading-[0.85] mb-12 tracking-tighter">
+            Born From<br><span class="text-gradient-stars">The Stars</span>
+        </h1>
+
         <div class="w-full space-y-4 mb-10">
             <div class="stellar-card p-6 flex items-center gap-5">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/eyes.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-lg uppercase leading-none">Vision</h4><p class="text-[10px] text-gray-400 mt-1">Beyond the Horizon</p></div>
+                <div class="icon-box bg-orange-500/10"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/eyes.png" class="w-6 h-6 object-contain"></div>
+                <div><h4 class="font-bold text-lg uppercase leading-none">Vision</h4><p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Our Future Lens</p></div>
             </div>
             <div class="stellar-card p-6 flex items-center gap-5">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/earth.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-lg uppercase leading-none">Motion</h4><p class="text-[10px] text-gray-400 mt-1">Living Pixels</p></div>
+                <div class="icon-box bg-teal-500/10"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/earth.png" class="w-6 h-6 object-contain"></div>
+                <div><h4 class="font-bold text-lg uppercase leading-none">Motion</h4><p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Life in Motion</p></div>
             </div>
             <div class="stellar-card p-6 flex items-center gap-5">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/infinite.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-lg uppercase leading-none">Infinite</h4><p class="text-[10px] text-gray-400 mt-1">No Boundaries</p></div>
+                <div class="icon-box bg-indigo-500/10"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/infinite.png" class="w-6 h-6 object-contain"></div>
+                <div><h4 class="font-bold text-lg uppercase leading-none">Infinite</h4><p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Endless Creativity</p></div>
             </div>
         </div>
-        <button onclick="go('scr-born', 'scr-main-dash')" class="w-full py-5 bg-indigo-600 rounded-2xl font-bold text-xs uppercase tracking-widest">Start Your Voyage 🚀</button>
+        <button onclick="go('scr-born', 'scr-main-dash')" class="w-full py-5 bg-indigo-600 rounded-3xl font-black text-xs uppercase tracking-widest shadow-xl shadow-indigo-900/40">Start Your Voyage 🚀</button>
     </div>
 
     <div id="scr-main-dash" class="screen bg-galaxy px-6 py-6 justify-start overflow-y-auto">
-        <div class="text-center mb-10 mt-10 px-2">
-            <h1 class="text-2xl font-black uppercase mb-3 tracking-tighter leading-tight">Welcome To<br>Stellar Universe</h1>
-            <p class="text-gray-400 text-[11px] leading-relaxed mb-6">A creative studio crafting stellar visuals and digital experiences for the next generation.</p>
-            <button class="text-indigo-400 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 mx-auto">Explore Our Universe →</button>
+        <div class="flex items-center justify-between w-full mb-8">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-xl">⚝</div>
+                <span class="font-black tracking-widest uppercase text-sm">Stellar</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative"><span class="text-xl">🔔</span><span class="absolute top-0 right-0 w-2 h-2 bg-indigo-500 rounded-full border-2 border-[#050508]"></span></div>
+                <img src="https://i.pravatar.cc/100" class="w-10 h-10 rounded-full border border-white/20">
+            </div>
         </div>
+
+        <div class="relative w-full aspect-video rounded-[2.5rem] overflow-hidden mb-10 stellar-card border-none">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800" class="w-full h-full object-cover opacity-80">
+            <div class="absolute bottom-6 left-6 flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+                <span class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Live Universe</span>
+            </div>
+        </div>
+
+        <div class="text-center mb-10 px-4">
+            <h1 class="text-3xl font-black uppercase mb-4 tracking-tighter leading-tight">Welcome To<br>Stellar Universe</h1>
+            <p class="text-gray-400 text-xs leading-relaxed mb-8">A creative studio crafting stellar visuals and digital experiences for the next generation.</p>
+            <button class="w-full py-5 bg-indigo-600 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3">
+                Explore Our Universe <span>→</span>
+            </button>
+        </div>
+
+        <div class="flex justify-between items-center w-full mb-6 px-2">
+            <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Main Modules</h3>
+            <span class="text-gray-600 italic text-xs">•••</span>
+        </div>
+
         <div class="grid grid-cols-2 gap-4 w-full mb-32">
-            <div class="stellar-card p-6 aspect-square flex flex-col justify-between">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/folder%20widget.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-[13px] uppercase">Services</h4><p class="text-[9px] text-gray-400">Visual Identity</p></div>
+            <div class="stellar-card p-6 flex flex-col justify-between aspect-[0.9/1]">
+                <div class="flex justify-between items-start">
+                    <div class="icon-box bg-indigo-500/20 mb-0"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/folder%20widget.png" class="w-6 h-6"></div>
+                    <span class="text-gray-500 text-lg">↗</span>
+                </div>
+                <div><h4 class="font-bold text-sm uppercase">Services</h4><p class="text-[9px] text-gray-500">Visual Identity</p></div>
             </div>
-            <div class="stellar-card p-6 aspect-square flex flex-col justify-between">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/eyes.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-[13px] uppercase">Portfolio</h4><p class="text-[9px] text-gray-400">Latest Works</p></div>
+            <div class="stellar-card p-6 flex flex-col justify-between aspect-[0.9/1]">
+                <div class="flex justify-between items-start">
+                    <div class="icon-box bg-orange-500/20 mb-0"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/eyes.png" class="w-6 h-6"></div>
+                    <span class="text-gray-500 text-lg">↗</span>
+                </div>
+                <div><h4 class="font-bold text-sm uppercase">Portfolio</h4><p class="text-[9px] text-gray-500">Cosmic Works</p></div>
             </div>
-            <div class="stellar-card p-6 aspect-square flex flex-col justify-between">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/earth.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-[13px] uppercase">About</h4><p class="text-[9px] text-gray-400">The Stars Team</p></div>
+            <div class="stellar-card p-6 flex flex-col justify-between aspect-[0.9/1]">
+                <div class="flex justify-between items-start">
+                    <div class="icon-box bg-teal-500/20 mb-0"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/earth.png" class="w-6 h-6"></div>
+                    <span class="text-gray-500 text-lg">↗</span>
+                </div>
+                <div><h4 class="font-bold text-sm uppercase">About</h4><p class="text-[9px] text-gray-500">The Stars Team</p></div>
             </div>
-            <div class="stellar-card p-6 aspect-square flex flex-col justify-between">
-                <img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/Rocket.png" class="w-10 h-10 object-contain">
-                <div><h4 class="font-bold text-[13px] uppercase">Start Project</h4><p class="text-[9px] text-gray-400">Launch Idea</p></div>
+            <div class="stellar-card p-6 flex flex-col justify-between aspect-[0.9/1] border-indigo-500/30 shadow-[0_0_30px_rgba(79,70,229,0.1)]">
+                <div class="flex justify-between items-start">
+                    <div class="icon-box bg-indigo-600/30 mb-0"><img src="https://raw.githubusercontent.com/MaxmunZ/Stellar-Universe-Assets/refs/heads/main/Rocket.png" class="w-6 h-6"></div>
+                    <span class="text-indigo-400 text-xl">+</span>
+                </div>
+                <div><h4 class="font-bold text-sm uppercase">Start Project</h4><p class="text-[9px] text-gray-500">Launch Idea</p></div>
             </div>
         </div>
     </div>
 
-    <div id="nav-bar" class="fixed bottom-8 left-6 right-6 h-20 bg-[#0a0a1a]/90 backdrop-blur-xl rounded-[2.5rem] flex items-center justify-around px-6 border border-white/10 z-[1000] shadow-2xl">
+    <div id="nav-bar" class="fixed bottom-8 left-6 right-6 h-20 bg-[#0a0a1a]/95 backdrop-blur-2xl rounded-[2.5rem] flex items-center justify-around px-6 border border-white/10 z-[1000] shadow-2xl">
         <div class="text-indigo-500 text-xl">🏠</div>
         <div class="opacity-30 text-xl">🔍</div>
         <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg -mt-10 border-4 border-[#050508] text-white text-xl">💬</div>
@@ -117,7 +181,7 @@
     <script>
         window.addEventListener('load', () => {
             document.getElementById('bar').style.width = '100%';
-            setTimeout(() => { go('scr-load', 'scr-1'); }, 3500);
+            setTimeout(() => { go('scr-load', 'scr-1'); }, 3000);
         });
 
         function go(oldId, newId) {
